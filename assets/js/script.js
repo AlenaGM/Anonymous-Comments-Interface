@@ -1,17 +1,14 @@
 const comments = ["Привет!","Как дела?"];
 
 document.getElementById('addComment').onclick = function(){
+
     event.preventDefault();
 
-    let newComment = document.getElementById("newComment").value.toLowerCase();
+    let newComment = document.getElementById("newComment").value;
+    let noViagra = newComment.replace(/viagra/ig,'***');
+    let validComment = noViagra.replace(/xxx/ig,'***');
 
-    if(newComment.includes('viagra')||newComment.includes('xxx')) {
-        let noViagra = newComment.replace(/viagra/g,'***');
-        let validComment = noViagra.replace(/xxx/g,'***');
-        comments.push(validComment);
-    } else {
-        comments.push(newComment);
-    }
+    comments.push(validComment);
 
     document.getElementById("newComment").value="";
 
@@ -24,10 +21,10 @@ function generateComments(){
     let optionsString = "";
 
     for (let comment of comments) {
-        optionsString += `<div id="message">${comment}</div>`;
+        optionsString += `<div id="validComment">${comment}</div>`;
     }
 
-    document.getElementById('oldComments').innerHTML = optionsString;
+    document.getElementById('validComments').innerHTML = optionsString;
 }
 
 
