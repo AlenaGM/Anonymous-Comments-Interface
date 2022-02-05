@@ -14,11 +14,17 @@
     <div class="wrapper">
         <header class="header"></header>
         <main class="main">
-                <div id="container" ></div>
-
-                <input id="newComment"><button onclick="addComment()">Добавить комментарий</button>
-            </div>
-
+            <h2>Анонимные комментарии</h2>
+            <div class="oldComments" id="oldComments"></div>
+            <form class="newComments">
+                <div>
+                    <label for="newComment">Введите комментарий</label>
+                    <input id="newComment">
+                </div>
+                <div>
+                    <button type="submit" id="addComment">Добавить комментарий</button>
+                </div>
+            </form>
         </main>
         <div class="footer"></div>
     </div>

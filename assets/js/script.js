@@ -1,43 +1,40 @@
 const comments = ["Привет!","Как дела?"];
 
-function addComment(){
-    let name = document.getElementById("newComment").value;
-    comments.push(name);
-    console.log(comments);
+document.getElementById('addComment').onclick = function(){
+    event.preventDefault();
+
+    let newComment = document.getElementById("newComment").value.toLowerCase();
+
+    if(newComment.includes('viagra')||newComment.includes('xxx')) {
+        let noViagra = newComment.replace(/viagra/g,'***');
+        let validComment = noViagra.replace(/xxx/g,'***');
+        comments.push(validComment);
+    } else {
+        comments.push(newComment);
+    }
 
     document.getElementById("newComment").value="";
+
     generateComments();
 }
 
+
 function generateComments(){
+
     let optionsString = "";
 
     for (let comment of comments) {
-        optionsString += `<div id="message"><span>${comment}</span></div>`;
+        optionsString += `<div id="message">${comment}</div>`;
     }
 
-    document.getElementById('container').innerHTML = optionsString;
+    document.getElementById('oldComments').innerHTML = optionsString;
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
 generateComments();
 });
 
 
-/*const checkSpam = document.querySelector(`#btn`);
 
-checkSpam.addEventListener("click", () => {
-    let message = document.getElementById("comments").value;
-    let newmessage = message.toLowerCase();
 
-    if (newmessage.includes(`xxx`)||newmessage.includes(`viagra`)){
-        let n = newmessage.replace("viagra", "xxx");
-        let m = n.replace("xxx","***");
-        comments.push(m);
-    }else{
-        comments.push(newmessage);
-    }
-    console.log(comments);
-    generateComments();
-
-})*/
