@@ -1,0 +1,94 @@
+html,
+body {
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E5E5E5;
+}
+
+/* - Позиционирование -------------------------------------- */
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.container {
+    max-width: 600px;
+    margin: 4% auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 2px 1px #70707033;
+    position: relative;
+}
+
+.newCommentbox {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+}
+
+.newCommentbox * {
+    outline: none;
+}
+
+.newComments {
+    border-top: solid 1px #70707033;
+    width: 100%;
+}
+
+#validComment, .textarea {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.label, .textarea, .validComments, .title {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.textarea {
+    border:none;
+}
+
+/* - Типографика, оформление ------------------------------- */
+.title {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #0966C2;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-align: left;
+    color: #0966C2;
+    padding-top: 5px;
+}
+
+
+/* - Оформление: кнопки ---------------------------- */
+.button {
+    border: none;
+    color: #0966C2;
+    background: #FFFFFF;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+.button img {
+    max-width: 20px;
+}
