@@ -4,5 +4,5 @@ font-family: 'Yanone Kaffeesatz', sans-serif;
 &subset=cyrillic-ext
 
 
-#0966C2 синий
+#6B005B шрифт, линии
 #E5E5E5 фон

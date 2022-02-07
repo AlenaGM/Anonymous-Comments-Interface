@@ -1,8 +1,9 @@
 html,
 body {
     height: 100%;
-    font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #484C56;
     background-color: #E5E5E5;
 }
 
@@ -22,7 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
-    box-shadow: 0px 0px 2px 1px #70707033;
+    box-shadow: 0px 0px 2px 1px #6B005B33;
     margin: 0px auto;
     padding-right: 15px;
     padding-left: 15px;
@@ -36,7 +37,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-top: solid 1px #70707033;
+    border-top: solid 1px #6B005B;
     padding-top: 5px;
 }
 
@@ -50,29 +51,33 @@ body {
     font-size: 24px;
     font-weight: 700;
     text-align: left;
-    color: #0966C2;
+    color: #6B005B;
     margin-top: 15px;
     margin-bottom: 0px;
 }
 
 .newComments__textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #484C56;
     border: none;
 }
 
 .newComments__label {
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     font-weight: 500;
     text-align: left;
-    color: #0966C2;
+    color: #6B005B;
     padding-top: 5px;
 }
 
 
 /* - Оформление: кнопки ---------------------------- */
 .newComments__button {
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #0966C2;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B005B;
     border: none;
     background: #FFFFFF;
     padding: 10px 0px;
