@@ -1,6 +1,6 @@
 const comments = ["Привет!","Как дела?"];
 
-document.getElementById('addComment').onclick = function(){
+document.getElementById('addComment').onclick = function(event){
 
     event.preventDefault();
 
