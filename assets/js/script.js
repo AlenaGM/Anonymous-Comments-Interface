@@ -30,14 +30,11 @@ function checkMessage (){
     }
 
     if(localStorage.getItem('avatar')==null){
-      localStorage.setItem('avatar', file)//здесь надо назначить из ф-ии
+      localStorage.setItem('avatar', avatar)//здесь надо назначить из ф-ии
     }
-
-
 
     sendMessage(file, author, comment);
 }
-
 
 
 document.getElementById('file').addEventListener('change', (e) => {
@@ -49,8 +46,6 @@ document.getElementById('file').addEventListener('change', (e) => {
     avatar = reader.result;
     // store file
     localStorage.setItem('avatar', avatar);
-    // display image
-    document.querySelector('#img').src = `${avatar}`;
   };
 
   reader.readAsDataURL(file);
