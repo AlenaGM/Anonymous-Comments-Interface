@@ -1,28 +1,33 @@
-document.addEventListener("DOMContentLoaded", function(event){
+let avatar;
+
+
+let storedimg = localStorage.getItem('avatar');
+
+document.addEventListener("DOMContentLoaded", function(){
 
     let name = localStorage.getItem('name');
-    let avatar = localStorage.getItem('avatar');
+
 
     if(name!=null){
         document.getElementById("author").value = name;
     }
 
-    if(avatar!=null){
-      document.getElementById("file").value = avatar;
+    if(storedimg!=null){
+      photoPreview.innerHTML = `<img id="img" src="${storedimg}">`;
   }
+
 })
 
-function sendMessage(file, author, comment) {
-    document.getElementById("chat").innerHTML += `<span class='file'><img id="img" src="${avatar}"></span><span class='author'>${author} : </span><span>${comment}</span><br>`;
+function sendMessage(avatar, author, comment) {
+    document.getElementById("chat").innerHTML += `<span class='file'><img id="img" src="${storedimg}"></span><span class='author'>${author} : </span><span>${comment}</span><br>`;
 }
 
-let avatar;
+
 
 function checkMessage (){
 
     let author = document.getElementById("author").value;//собираем введенные значения
     let comment = document.getElementById("comment").value;
-    let file = document.getElementById("file").value;
 
 
     if(localStorage.getItem('name')==null){//проверяем есть ли что-нибудь уже в ключе, назначаем значение из инаута
@@ -33,23 +38,34 @@ function checkMessage (){
       localStorage.setItem('avatar', avatar)//здесь надо назначить из ф-ии
     }
 
-    sendMessage(file, author, comment);
+    sendMessage(avatar, author, comment);
 }
 
 
-document.getElementById('file').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  const reader = new FileReader();
 
-  reader.onloadend = () => {
-    // convert file to base64 String
-    avatar = reader.result;
-    // store file
-    localStorage.setItem('avatar', avatar);
-  };
+const photoFile = document.getElementById('photoFile');
+const photoPreview = document.getElementById('photoPreview');
+
+photoFile.addEventListener('change', () => {
+        uploadFile(photoFile .files[0]);
+    });
+
+function uploadFile(file) {
+        let reader = new FileReader();
+
+        reader.onload = function(e){
+            photoPreview.innerHTML = `<img src='${e.target.result}' alt="photo" width="100">`
+
+            avatar = reader.result;
+
+            localStorage.setItem('avatar', avatar);
+        };
+
+
 
   reader.readAsDataURL(file);
-});
+};
+
 
 
 
