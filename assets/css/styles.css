@@ -29,6 +29,26 @@ body {
     padding-left: 15px;
 }
 
+.file__preview {
+    display: inline-block;
+    max-width: 120px;
+    padding: 10px 0px 0px 0px;
+}
+
+.file__preview img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+#img {
+    max-width: 80px;
+    border-radius:50px;
+}
+
+#deleteImgs {
+    display: none;
+}
+/*
 .newComments * {
     outline: none;
 }
@@ -45,7 +65,7 @@ body {
     padding: 5px 0px;
 }
 
-/* - Типографика, оформление ------------------------------- */
+- Типографика, оформление -------------------------------
 .title {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 24px;
@@ -73,7 +93,7 @@ body {
 }
 
 
-/* - Оформление: кнопки ---------------------------- */
+- Оформление: кнопки ----------------------------
 .newComments__button {
     font-size: 12px;
     font-weight: 500;
@@ -89,4 +109,4 @@ body {
 
 .newComments__button img {
     max-width: 20px;
-}
+}*/

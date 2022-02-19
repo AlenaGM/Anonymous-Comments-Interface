@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Yanone+Kaffeesatz:wght@700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Yanone+Kaffeesatz:wght@700&display=swap&subset=cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="shortcut icon" href="assets/img/comments.png" type="img/png">
@@ -14,19 +14,42 @@
 </head>
 <body>
     <div class="wrapper">
-        <header class="header"></header>
-        <main class="main">
-            <div class="container">
-                <h2 class="title">Анонимные комментарии</h2>
-                <div class="validComments" id="validComments"></div>
-                <form class="newComments">
-                    <label for="newComment" class="newComments__label">Введите комментарий</label>
-                    <textarea id="newComment" class="newComments__textarea" cols="33" rows="5"></textarea>
-                    <button type="submit" id="addComment" class="newComments__button"><img src="assets/img/send.svg" alt="plane icon">Отправить</button>
-                </form>
-            </div>
-        </main>
-        <div class="footer"></div>
+        <div class="container">
+            <h1 class="title">Чат</h1>
+            <div id="chat"></div>
+<!--РАБОЧАЯ ОБЛАСТЬ-->
+            <form>
+                <div>
+                    <label for="author"> Имя *
+                        <span id="authorError"></span>
+                    </label>
+                </div>
+                <div>
+                    <input type="text" name="author" id="author" value="" class="inputs"/>
+                </div>
+                <div>
+                    <label for="file"> Аватарка *</label>
+                    <span id="fileError"></span>
+                </div>
+                <div>
+                    <input type="file" name="file" id="file" value="" class="inputs"/>
+                </div>
+
+                <div>
+                    <label for="comment"> Комментарий:
+                        <span id="commentError"></span>
+                    </label>
+                </div>
+                <div>
+                    <textarea name="comment" id="comment" class="inputs"></textarea>
+                </div>
+                <div>
+                    <input name="button" type="button" id="button" value="Отправить" onclick="checkMessage();"/>
+                </div>
+            </form>
+
+<!--КОНЕЦ РАБОЧЕЙ ОБЛАСТИ-->
+        </div>
     </div>
 
     <script src="assets/js/script.js"></script>
