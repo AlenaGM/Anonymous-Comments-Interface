@@ -6,7 +6,7 @@ let storedimg;
 
 document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
 
-    let storedimg = localStorage.getItem('avatar');//внутренность стореджа photoFile -> avatar
+    storedimg = localStorage.getItem('avatar');//внутренность стореджа photoFile -> avatar
     let name = localStorage.getItem('name');
 
     if(name!=null){
@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function (){//Что мы види
     }
 })
 
-function sendMessage(author, comment) {//Отправка в общий чат
+function sendMessage(storedimg, author, comment) {//Отправка в общий чат
+    storedimg = localStorage.getItem('avatar');
     document.getElementById("chat").innerHTML += `<span class='file'><img id="img" src="${storedimg}"></span><span class='author'>${author} : </span><span>${comment}</span><br>`;
 }
 
@@ -35,9 +36,8 @@ function checkMessage (){
         localStorage.setItem('avatar', avatar);//здесь надо назначить из ф-ии
     }
 
-    sendMessage(author, comment);
+    sendMessage(avatar, author, comment);
 }
-
 
 photoFile.addEventListener('change', () => {
         uploadFile(photoFile.files[0]);
