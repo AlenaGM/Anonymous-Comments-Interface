@@ -1,27 +1,26 @@
-let avatar;
+let photoFile = document.getElementById('photoFile');//инпут, куда грузим фото
+let photoPreview = document.getElementById('photoPreview');//внутренность превьюшки
+let avatar;//результат прочтения ридером
+let storedimg = localStorage.getItem('avatar');//внутренность стореджа photoFile -> avatar
 
 
-let storedimg = localStorage.getItem('avatar');
-
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
 
     let name = localStorage.getItem('name');
-
 
     if(name!=null){
         document.getElementById("author").value = name;
     }
 
     if(storedimg!=null){
-      photoPreview.innerHTML = `<img id="img" src="${storedimg}">`;
-  }
-
+        photoPreview.innerHTML = `<img id="img" src="${storedimg}">`;
+    }
 })
 
-function sendMessage(avatar, author, comment) {
+
+function sendMessage(avatar, author, comment) {//Отправка в общий чат
     document.getElementById("chat").innerHTML += `<span class='file'><img id="img" src="${storedimg}"></span><span class='author'>${author} : </span><span>${comment}</span><br>`;
 }
-
 
 
 function checkMessage (){
@@ -34,26 +33,24 @@ function checkMessage (){
         localStorage.setItem('name', author)
     }
 
-    if(localStorage.getItem('avatar')==null){
-      localStorage.setItem('avatar', avatar)//здесь надо назначить из ф-ии
+    if(storedimg==null){
+        localStorage.setItem('avatar', avatar)//здесь надо назначить из ф-ии
     }
 
     sendMessage(avatar, author, comment);
 }
 
-
-
-const photoFile = document.getElementById('photoFile');
-const photoPreview = document.getElementById('photoPreview');
-
 photoFile.addEventListener('change', () => {
-        uploadFile(photoFile .files[0]);
+        uploadFile(photoFile.files[0]);
     });
 
 function uploadFile(file) {
+
         let reader = new FileReader();
 
-        reader.onload = function(e){
+        reader.readAsDataURL(file);
+
+        reader.onloadend = function(e){
             photoPreview.innerHTML = `<img src='${e.target.result}' alt="photo" width="100">`
 
             avatar = reader.result;
@@ -61,9 +58,6 @@ function uploadFile(file) {
             localStorage.setItem('avatar', avatar);
         };
 
-
-
-  reader.readAsDataURL(file);
 };
 
 
