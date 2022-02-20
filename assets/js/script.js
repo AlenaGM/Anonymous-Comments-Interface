@@ -28,9 +28,7 @@ function checkMessage (){
     //собираем введенные значения
     let comment = document.getElementById("comment").value;
 
-    if(localStorage.getItem('name')==null){//проверяем есть ли что-нибудь уже в ключе, назначаем значение из инаута
-        localStorage.setItem('name', author);
-    }
+    localStorage.setItem('name', author);
 
     if(storedimg==null){
         localStorage.setItem('avatar', avatar);//здесь надо назначить из ф-ии
