@@ -1,61 +1,143 @@
-let photoFile = document.getElementById('photoFile');//инпут, куда грузим фото
-let photoPreview = document.getElementById('photoPreview');//внутренность превьюшки
-let avatar;//результат прочтения ридером
-let storedimg;
+let storedArray = []
 
-
-document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
-
-    storedimg = localStorage.getItem('avatar');//внутренность стореджа photoFile -> avatar
-    let name = localStorage.getItem('name');
-
-    if(name!=null){
-        document.getElementById("author").value = name;
-    }
-
-    if(storedimg!=null){
-        photoPreview.innerHTML = `<img id="img" src="${storedimg}">`;
-    }
-})
-
-function sendMessage(storedimg, author, comment) {//Отправка в общий чат
-    storedimg = localStorage.getItem('avatar');
-    document.getElementById("chat").innerHTML += `<span class='file'><img id="img" src="${storedimg}"></span><span class='author'>${author} : </span><span>${comment}</span><br>`;
-}
-
-function checkMessage (){
+// 1-й шаг - собираем данные из формы
+document.getElementById('button').onclick = (e) =>{
+    //По умолчанию, отправка формы означает запрос на сервер. Чтобы это остановить, выполняем команду:
+    e.preventDefault()
+    //собираем введенные в форму значения
     let author = document.getElementById("author").value;
-    //собираем введенные значения
     let comment = document.getElementById("comment").value;
+    const photo = document.getElementById('photo').src;
 
-    localStorage.setItem('name', author);
+    if(author && photo && comment){
+        // Генерируем карточку и добавляем ее на страницу
+        const newCard = generateCard(author, photo, comment)
+        document.querySelector('#chat').appendChild(newCard)
 
-    if(storedimg==null){
-        localStorage.setItem('avatar', avatar);//здесь надо назначить из ф-ии
-    }
+        //Добавляем в хранилище
+        addElementToLocalStorage(author, photo, comment)
 
-    sendMessage(avatar, author, comment);
-}
+        // Очищаем форму
+        document.getElementById('form').reset();
+        document.getElementById('photo').src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvaDTNbW8gPjAVwm_z9I0ZM0cPAJlyPCJksw&usqp=CAU'
+        }
+    };
 
-photoFile.addEventListener('change', () => {
-        uploadFile(photoFile.files[0]);
-    });
+//Вставка аватарки, слушаем изменение в поле <input type="file" id="file" value="">
+document.getElementById('photo').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    // при успешном завершении операции чтения
+    reader.onload = (function (file) {
+        return function (e) {
+            const r = e.target;
+            // получаем содержимое файла, состояние чтения, ошибки(или null)
+            const photo = r.result
 
-function uploadFile(file) {
-
-        let reader = new FileReader();
-
-        reader.onloadend = function(e){
-
-            photoPreview.innerHTML = `<img src='${e.target.result}' alt="photo" width="100">`
-
-            avatar = reader.result;
-
-            localStorage.setItem('avatar', avatar);
+            document.getElementById('photo').src = photo
         };
+    })(file);
 
     reader.readAsDataURL(file);
-};
+})
+
+//Шаг 2: Генерация карточки
+const generateCard = (author, photo, comment) =>{
+
+    //Рисуем карточку
+    let card = document.createElement('div')
+    card.classList.add("card");
+
+    let card__image = document.createElement('img')
+    card__image.classList.add("card__image");
+    card__image.src = photo
+
+    let card__main = document.createElement('div')
+    card.classList.add("card__main")
+
+    let h3 = document.createElement('h3')
+    h3.innerText = author
+
+    let chatMsg = document.createElement('p')
+    chatMsg.innerText = comment
+
+    card__main.appendChild(h3)
+    card__main.appendChild(chatMsg)
+
+    card.appendChild(card__image)
+    card.appendChild(card__main)
+
+    return card
+}
+
+
+//Шаг 3: Работа с localStorage
+//Важно помнить, что в веб-хранилище все данные-это строки
+
+
+
+
+getArrFromLocalStorage = () =>{
+
+let collection = JSON.parse(localStorage.getItem("chatMsgsCollection"));
+
+    if(collection){
+        storedArray = collection;
+    }
+
+const lastItem = collection[collection.length - 1];
+let lastAuthor = lastItem[0];
+let lastPhoto = lastItem[1];
+
+document.getElementById("author").value = lastAuthor;
+document.getElementById('photo').src = lastPhoto;
+document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" width="60"></span>`;
+}
+
+
+
+
+setArrToLocalStorage = () =>{
+    localStorage.setItem("chatMsgsCollection", JSON.stringify(storedArray));
+}
+
+addElementToLocalStorage = (author, photo, comment) => {
+    storedArray.push([author, photo, comment])
+    setArrToLocalStorage()
+}
+
+//Шаг 4: Нужно получать коллекцию из хранилица при загрузке страницы
+document.addEventListener("DOMContentLoaded",function(){
+    getComments()
+})
+
+function getComments() {
+    //Находим список всех контактов
+    getArrFromLocalStorage()
+
+
+    for( let i = 0; i < storedArray.length; i++){
+        //Храним контакты в таком виде:
+        // [
+        //     [author, photo, comment],
+        //     [author, photo, comment],
+        //     ....
+        // ]
+
+        const newCard = generateCard(storedArray[i][0],storedArray[i][1], storedArray[i][2] )
+        document.querySelector('#chat').appendChild(newCard)
+    }
+}
+
+
+
+/*
+document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
+let test = localStorage.getItem(chatMsgsCollection[0]);
+
+
+})*/
+
 
 
 

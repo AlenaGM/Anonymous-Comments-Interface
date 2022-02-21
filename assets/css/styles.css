@@ -48,6 +48,13 @@ body {
 #deleteImgs {
     display: none;
 }
+
+.card__image {
+    max-width: 80px;
+    border-radius: 50%;
+}
+
+
 /*
 .newComments * {
     outline: none;
