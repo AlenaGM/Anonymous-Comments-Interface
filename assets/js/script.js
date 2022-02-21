@@ -86,12 +86,12 @@ let collection = JSON.parse(localStorage.getItem("chatMsgsCollection"));
     }
 
 const lastItem = collection[collection.length - 1];
-let lastAuthor = lastItem[0];
-let lastPhoto = lastItem[1];
+const lastAuthor = lastItem[0];
+const lastPhoto = lastItem[1];
 
 document.getElementById("author").value = lastAuthor;
 document.getElementById('photo').src = lastPhoto;
-document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" width="60"></span>`;
+//document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" id="avatar" width="60"></span>`;
 }
 
 
@@ -131,12 +131,11 @@ function getComments() {
 
 
 
-/*
+
 document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
-let test = localStorage.getItem(chatMsgsCollection[0]);
+    getArrFromLocalStorage();
+})
 
-
-})*/
 
 
 
