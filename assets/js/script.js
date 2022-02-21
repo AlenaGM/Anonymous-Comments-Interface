@@ -16,10 +16,6 @@ document.getElementById('button').onclick = (e) =>{
 
         //Добавляем в хранилище
         addElementToLocalStorage(author, photo, comment)
-
-        // Очищаем форму
-        document.getElementById('form').reset();
-        document.getElementById('photo').src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvaDTNbW8gPjAVwm_z9I0ZM0cPAJlyPCJksw&usqp=CAU'
         }
     };
 
