@@ -1,8 +1,9 @@
 let storedArray = []
 
-// 1-й шаг - собираем данные из формы
+// ЗАБИРАЕМ ДАННЫЕ ИЗ ФОРМЫ
+
 document.getElementById('button').onclick = (e) =>{
-    //По умолчанию, отправка формы означает запрос на сервер. Чтобы это остановить, выполняем команду:
+
     e.preventDefault()
     //собираем введенные в форму значения
     let author = document.getElementById("author").value;
@@ -19,7 +20,7 @@ document.getElementById('button').onclick = (e) =>{
         }
     };
 
-//Вставка аватарки, слушаем изменение в поле <input type="file" id="file" value="">
+//Вставка аватарки, слушаем изменение в поле <input type="file">
 document.getElementById('photo').addEventListener('change', (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -37,7 +38,7 @@ document.getElementById('photo').addEventListener('change', (e) => {
     reader.readAsDataURL(file);
 })
 
-//Шаг 2: Генерация карточки
+//ГЕНЕРИРУЕМ КАРТОЧКУ = СООБЩЕНИЕ НА ФОРУМЕ
 const generateCard = (author, photo, comment) =>{
 
     //Рисуем карточку
@@ -66,32 +67,25 @@ const generateCard = (author, photo, comment) =>{
     return card
 }
 
-
-//Шаг 3: Работа с localStorage
-//Важно помнить, что в веб-хранилище все данные-это строки
-
-
-
+//РАБОТА С LOCALSTORAGE
 
 getArrFromLocalStorage = () =>{
 
 let collection = JSON.parse(localStorage.getItem("chatMsgsCollection"));
 
     if(collection){
-        storedArray = collection;
+    storedArray = collection;
+
+    const lastItem = collection[collection.length - 1];
+    const lastAuthor = lastItem[0];
+    const lastPhoto = lastItem[1];
+
+    document.getElementById("author").value = lastAuthor;
+    document.getElementById('photo').src = lastPhoto;
+
+    //document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" id="avatar" width="60"></span>`;
     }
-
-const lastItem = collection[collection.length - 1];
-const lastAuthor = lastItem[0];
-const lastPhoto = lastItem[1];
-
-document.getElementById("author").value = lastAuthor;
-document.getElementById('photo').src = lastPhoto;
-//document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" id="avatar" width="60"></span>`;
 }
-
-
-
 
 setArrToLocalStorage = () =>{
     localStorage.setItem("chatMsgsCollection", JSON.stringify(storedArray));
@@ -108,12 +102,11 @@ document.addEventListener("DOMContentLoaded",function(){
 })
 
 function getComments() {
-    //Находим список всех контактов
+    //Находим список всех комментариев
     getArrFromLocalStorage()
 
-
     for( let i = 0; i < storedArray.length; i++){
-        //Храним контакты в таком виде:
+        //Храним комментарии в таком виде:
         // [
         //     [author, photo, comment],
         //     [author, photo, comment],
@@ -124,9 +117,6 @@ function getComments() {
         document.querySelector('#chat').appendChild(newCard)
     }
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", function (){//Что мы видим при загрузке
     getArrFromLocalStorage();
