@@ -57,28 +57,37 @@ const generateCard = (author, date, photo, comment) =>{
     card__image.classList.add("card__image");
     card__image.src = photo
 
+    let card__main = document.createElement('div')
+    card__main.classList.add("card__main")
+
+    let card__info = document.createElement('div')
+    card__info.classList.add("card__info")
+
+    let card__title = document.createElement('h3')
+    card__title.classList.add("card__title")
+    card__title.innerText = author
+
+    let card__date = document.createElement('div')
+    card__date.classList.add("card__date")
+    card__date.innerText = date
+
+    let card__text = document.createElement('p')
+    card__text.classList.add("card__text")
+    card__text.innerText = comment
+
     let card__del = document.createElement('button')
     card__del.classList.add("card__del");
-
-    let card__main = document.createElement('div')
-    card.classList.add("card__main")
-
-    let h3 = document.createElement('h3')
-    h3.innerText = author
-
-    let msgDate = document.createElement('div')
-    msgDate.innerText = date
-
-    let chatMsg = document.createElement('p')
-    chatMsg.innerText = comment
-
-    card__main.appendChild(h3)
-    card__main.appendChild(msgDate)
-    card__main.appendChild(chatMsg)
+    card__del.innerHTML="delete"
 
     card.appendChild(card__image)
     card.appendChild(card__main)
-    card.appendChild(card__del)
+
+    card__main.appendChild(card__info)
+    card__main.appendChild(card__text)
+    card__main.appendChild(card__del)
+
+    card__info.appendChild(card__title)
+    card__info.appendChild(card__date)
 
     return card
 }
@@ -143,7 +152,7 @@ document.addEventListener("click", function (ev){
     if (ev.target.tagName === "BUTTON") {
         let div = ev.target.parentNode;
         div.remove();
-        //localStorage.removeItem('chatMsgsCollection'); удаляет все
+        //localStorage.removeItem('chatMsgsCollection'); //удаляет все :(
         console.log('hihihi');
     }
 });

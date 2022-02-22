@@ -29,30 +29,51 @@ body {
     padding-left: 15px;
 }
 
-.file__preview {
-    display: inline-block;
-    max-width: 120px;
-    padding: 10px 0px 0px 0px;
-}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
-.file__preview img {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-#img {
-    max-width: 80px;
-    border-radius:50px;
-}
-
-#deleteImgs {
-    display: none;
 }
 
 .card__image {
-    max-width: 80px;
+    top: 0;
+    left: 0;
     border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    align-self: center;
+    padding-right: 10px;
 }
+
+.card__main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card__info {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.card__title {
+    margin: 0px;
+}
+
+.card__date {
+    font-style: italic;
+}
+
+.card__del {
+    width: 50px;
+    height: 20px;
+}
+
+
+
 
 
 /*
