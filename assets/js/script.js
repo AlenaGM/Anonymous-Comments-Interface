@@ -11,6 +11,9 @@ document.getElementById('button').onclick = (e) =>{
     const photo = document.getElementById('photo').src;
     let date = new Date();
 
+    //Форматироание даты
+    date = `${new Intl.DateTimeFormat('ru-RU', {day:'2-digit', month:'2-digit'}).format(date)} в ${new Intl.DateTimeFormat('ru-RU', {hour:'2-digit', minute:'2-digit'}).format(date)}`;
+
     if(author && photo && comment){
         // Генерируем карточку и добавляем ее на страницу
         const newCard = generateCard(author, date, photo, comment)
@@ -38,9 +41,6 @@ document.getElementById('photo').addEventListener('change', (e) => {
 
     reader.readAsDataURL(file);
 })
-
-//Форматироание даты
-
 
 //ГЕНЕРИРУЕМ КАРТОЧКУ = СООБЩЕНИЕ НА ФОРУМЕ
 const generateCard = (author, date, photo, comment) =>{
