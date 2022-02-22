@@ -9,14 +9,15 @@ document.getElementById('button').onclick = (e) =>{
     let author = document.getElementById("author").value;
     let comment = document.getElementById("comment").value;
     const photo = document.getElementById('photo').src;
+    let date = new Date();
 
     if(author && photo && comment){
         // Генерируем карточку и добавляем ее на страницу
-        const newCard = generateCard(author, photo, comment)
+        const newCard = generateCard(author, date, photo, comment)
         document.querySelector('#chat').appendChild(newCard)
 
         //Добавляем в хранилище
-        addElementToLocalStorage(author, photo, comment)
+        addElementToLocalStorage(author, date, photo, comment)
         }
     };
 
@@ -39,7 +40,7 @@ document.getElementById('photo').addEventListener('change', (e) => {
 })
 
 //ГЕНЕРИРУЕМ КАРТОЧКУ = СООБЩЕНИЕ НА ФОРУМЕ
-const generateCard = (author, photo, comment) =>{
+const generateCard = (author, date, photo, comment) =>{
 
     //Рисуем карточку
     let card = document.createElement('div')
@@ -55,10 +56,14 @@ const generateCard = (author, photo, comment) =>{
     let h3 = document.createElement('h3')
     h3.innerText = author
 
+    let msgDate = document.createElement('div')
+    msgDate.innerText = date
+
     let chatMsg = document.createElement('p')
     chatMsg.innerText = comment
 
     card__main.appendChild(h3)
+    card__main.appendChild(msgDate)
     card__main.appendChild(chatMsg)
 
     card.appendChild(card__image)
@@ -78,7 +83,7 @@ let collection = JSON.parse(localStorage.getItem("chatMsgsCollection"));
 
     const lastItem = collection[collection.length - 1];
     const lastAuthor = lastItem[0];
-    const lastPhoto = lastItem[1];
+    const lastPhoto = lastItem[2];
 
     document.getElementById("author").value = lastAuthor;
     document.getElementById('photo').src = lastPhoto;
@@ -91,8 +96,8 @@ setArrToLocalStorage = () =>{
     localStorage.setItem("chatMsgsCollection", JSON.stringify(storedArray));
 }
 
-addElementToLocalStorage = (author, photo, comment) => {
-    storedArray.push([author, photo, comment])
+addElementToLocalStorage = (author, date, photo, comment) => {
+    storedArray.push([author, date, photo, comment])
     setArrToLocalStorage()
 }
 
@@ -108,12 +113,12 @@ function getComments() {
     for( let i = 0; i < storedArray.length; i++){
         //Храним комментарии в таком виде:
         // [
-        //     [author, photo, comment],
-        //     [author, photo, comment],
+        //     [author, date, photo, comment],
+        //     [author, date, photo, comment],
         //     ....
         // ]
 
-        const newCard = generateCard(storedArray[i][0],storedArray[i][1], storedArray[i][2] )
+        const newCard = generateCard(storedArray[i][0],storedArray[i][1], storedArray[i][2], storedArray[i][2] )
         document.querySelector('#chat').appendChild(newCard)
     }
 }
