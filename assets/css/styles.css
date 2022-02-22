@@ -18,7 +18,6 @@ body {
 
 .container {
     max-width: 600px;
-    min-width: 260px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -29,12 +28,16 @@ body {
     padding-left: 15px;
 }
 
+
+/* - Карточки -------------------------------------- */
 .card {
+    max-width: 600px;
     position: relative;
     display: flex;
     flex-direction: row;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-bottom: solid 1px lightslategray ;
 
 }
 
@@ -44,8 +47,8 @@ body {
     border-radius: 50%;
     width: 80px;
     height: 80px;
-    align-self: center;
-    padding-right: 10px;
+    align-self: start;
+    padding-right: 20px;
 }
 
 .card__main {
@@ -67,74 +70,12 @@ body {
     font-style: italic;
 }
 
+.card__text {
+    display: flex;
+    overflow-wrap: anywhere;
+}
+
 .card__del {
     width: 50px;
     height: 20px;
 }
-
-
-
-
-
-/*
-.newComments * {
-    outline: none;
-}
-
-.newComments {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-top: solid 1px #6B005B;
-    padding-top: 5px;
-}
-
-#validComment, .newComments__textarea {
-    padding: 5px 0px;
-}
-
-- Типографика, оформление -------------------------------
-.title {
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: left;
-    color: #6B005B;
-    margin-top: 15px;
-    margin-bottom: 0px;
-}
-
-.newComments__textarea {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    color: #484C56;
-    border: none;
-}
-
-.newComments__label {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: left;
-    color: #6B005B;
-    padding-top: 5px;
-}
-
-
-- Оформление: кнопки ----------------------------
-.newComments__button {
-    font-size: 12px;
-    font-weight: 500;
-    color: #6B005B;
-    border: none;
-    background: #FFFFFF;
-    padding: 10px 0px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.newComments__button img {
-    max-width: 20px;
-}*/
