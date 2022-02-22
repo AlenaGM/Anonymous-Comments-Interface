@@ -39,6 +39,9 @@ document.getElementById('photo').addEventListener('change', (e) => {
     reader.readAsDataURL(file);
 })
 
+//Форматироание даты
+
+
 //ГЕНЕРИРУЕМ КАРТОЧКУ = СООБЩЕНИЕ НА ФОРУМЕ
 const generateCard = (author, date, photo, comment) =>{
 
@@ -118,7 +121,7 @@ function getComments() {
         //     ....
         // ]
 
-        const newCard = generateCard(storedArray[i][0],storedArray[i][1], storedArray[i][2], storedArray[i][2] )
+        const newCard = generateCard(storedArray[i][0],storedArray[i][1], storedArray[i][2], storedArray[i][3] )
         document.querySelector('#chat').appendChild(newCard)
     }
 }
