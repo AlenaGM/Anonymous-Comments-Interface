@@ -6,9 +6,10 @@ document.getElementById('button').onclick = (e) =>{
 
     e.preventDefault()
     //собираем введенные в форму значения
-    let author = document.getElementById("author").value;
-    let comment = document.getElementById("comment").value;
+    const author = document.getElementById("author").value;
+    const comment = document.getElementById("comment").value;
     const photo = document.getElementById('photo').src;
+
     let date = new Date();
 
     //Форматироание даты
@@ -71,6 +72,7 @@ const generateCard = (author, date, photo, comment) =>{
 
     card.appendChild(card__image)
     card.appendChild(card__main)
+    card.appendChild(card__del)
 
     return card
 }
@@ -130,8 +132,7 @@ document.addEventListener("DOMContentLoaded", function (){//Что мы види
     getArrFromLocalStorage();
 })
 
-
-
+//Удаление карточки
 
 
 
