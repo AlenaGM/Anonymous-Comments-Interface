@@ -22,6 +22,9 @@ document.getElementById('button').onclick = (e) =>{
 
         //Добавляем в хранилище
         addElementToLocalStorage(author, date, photo, comment)
+
+        //Очищаем коммент
+        document.getElementById("comment").value = '';
         }
     };
 
@@ -54,6 +57,9 @@ const generateCard = (author, date, photo, comment) =>{
     card__image.classList.add("card__image");
     card__image.src = photo
 
+    let card__del = document.createElement('button')
+    card__del.classList.add("card__del");
+
     let card__main = document.createElement('div')
     card.classList.add("card__main")
 
@@ -72,6 +78,7 @@ const generateCard = (author, date, photo, comment) =>{
 
     card.appendChild(card__image)
     card.appendChild(card__main)
+    card.appendChild(card__del)
 
     return card
 }
@@ -131,7 +138,15 @@ document.addEventListener("DOMContentLoaded", function (){//Что мы види
     getArrFromLocalStorage();
 })
 
-//Удаление карточки
+//Удаление карточки/не работает
+document.addEventListener("click", function (ev){
+    if (ev.target.tagName === "BUTTON") {
+        let div = ev.target.parentNode;
+        div.remove();
+        //localStorage.removeItem('chatMsgsCollection'); удаляет все
+        console.log('hihihi');
+    }
+});
 
 
 
