@@ -41,7 +41,7 @@ body {
 }
 
 .card:not(:last-of-type){
-    border-bottom: solid 1px lightslategray;
+    border-bottom: solid 1px rgb(163, 175, 187);
 }
 
 .card__image {
@@ -79,19 +79,41 @@ body {
 }
 
 .card__del {
-    width: 50px;
+    width: 80px;
     height: 20px;
 }
 
 
 /* - Форма ввода комментариев ---------------------- */
 .form {
-    border: solid 1px lightslategray;
+    border: solid 1px rgb(163, 175, 187);
     border-radius: 8px;
-    margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.form * {
+    outline: none;
+}
+
+.form__label {
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 2px;
+}
+
+.form__button {
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.form__input {
+    padding: 10px;
+    border-radius: 8px;
+    border: solid 1px rgb(163, 175, 187);
 }
 

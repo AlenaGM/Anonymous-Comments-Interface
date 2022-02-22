@@ -77,7 +77,7 @@ const generateCard = (author, date, photo, comment) =>{
 
     let card__del = document.createElement('button')
     card__del.classList.add("card__del");
-    card__del.innerHTML="delete"
+    card__del.innerHTML="Удалить"
 
     card.appendChild(card__image)
     card.appendChild(card__main)
