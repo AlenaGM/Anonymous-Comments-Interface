@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 html,
 body {
     height: 100%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+    line-height: 140%;
     color: #484C56;
     background-color: #E5E5E5;
 }
@@ -39,10 +45,10 @@ body {
     padding-bottom: 20px;
 
 }
-
+/*
 .card:not(:last-of-type){
     border-bottom: solid 1px rgb(163, 175, 187);
-}
+}*/
 
 .card__image {
     top: 0;
@@ -67,15 +73,30 @@ body {
 
 .card__title {
     margin: 0px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: left;
 }
 
 .card__date {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
     font-style: italic;
+    font-weight: 500;
+    text-align: left;
 }
 
 .card__text {
     display: flex;
     overflow-wrap: anywhere;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: left;
+    line-height: 140%;
 }
 
 .card__del {
@@ -86,8 +107,7 @@ body {
 
 /* - Форма ввода комментариев ---------------------- */
 .form {
-    border: solid 1px rgb(163, 175, 187);
-    border-radius: 8px;
+    border-top: solid 1px rgb(163, 175, 187);
     margin-bottom: 20px;
     padding: 10px;
     display: flex;
@@ -99,9 +119,13 @@ body {
 }
 
 .form__label {
-    font-weight: 600;
     margin-top: 14px;
     margin-bottom: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: left;
 }
 
 .form__button {
@@ -113,7 +137,11 @@ body {
 
 .form__input {
     padding: 10px;
-    border-radius: 8px;
     border: solid 1px rgb(163, 175, 187);
+}
+
+textarea {
+    min-height: 160px;
+    resize: vertical;
 }
 
