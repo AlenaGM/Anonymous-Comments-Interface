@@ -37,8 +37,11 @@ body {
     flex-direction: row;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-bottom: solid 1px lightslategray ;
 
+}
+
+.card:not(:last-of-type){
+    border-bottom: solid 1px lightslategray;
 }
 
 .card__image {
@@ -79,3 +82,16 @@ body {
     width: 50px;
     height: 20px;
 }
+
+
+/* - Форма ввода комментариев ---------------------- */
+.form {
+    border: solid 1px lightslategray;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+

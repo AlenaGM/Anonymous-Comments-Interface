@@ -15,38 +15,19 @@
 <body>
     <div class="wrapper">
         <div class="container">
-
             <h1 class="title">Чат</h1>
             <div id="chat"></div>
 
-            <form id="form">
-                <div>
-                    <label for="author"> Имя *
-                    </label>
-                </div>
-                <div>
-                    <input type="text" name="author" id="author" value="" class="inputs"/>
-                </div>
-                <div>
-                    <label for="photo"> Аватарка *</label>
-                </div>
-                <div>
-                    <input type="file" name="file" id="photo" class="inputs"/>
-                    <div id="photoPreview"></div>
-                </div>
-
-                <div>
-                    <label for="comment"> Комментарий:
-                    </label>
-                </div>
-                <div>
-                    <textarea name="comment" id="comment" class="inputs"></textarea>
-                </div>
-                <div>
-                    <input name="button" type="button" id="button" value="Отправить"/>
-                </div>
+            <form id="form" class="form">
+                <label for="author" class="form__label"> Имя *</label>
+                <input type="text" name="author" id="author" value="" class="inputs"/>
+                <label for="photo" class="form__label"> Аватарка *</label>
+                <input type="file" name="file" id="photo" class="inputs"/>
+                <div id="photoPreview"></div>
+                <div class="form__label"> Комментарий:</div>
+                <textarea name="comment" id="comment" class="inputs"></textarea>
+                <input name="button" type="button" id="button" value="Отправить"/>
             </form>
-
         </div>
     </div>
 
