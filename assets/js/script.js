@@ -72,7 +72,6 @@ const generateCard = (author, date, photo, comment) =>{
 
     card.appendChild(card__image)
     card.appendChild(card__main)
-    card.appendChild(card__del)
 
     return card
 }
