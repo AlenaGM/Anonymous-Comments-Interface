@@ -34,6 +34,10 @@ body {
 }
 
 /* - Карточки -------------------------------------- */
+ul {
+  padding-inline-start: 0px;
+}
+
 .card {
   max-width: 600px;
   position: relative;

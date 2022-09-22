@@ -1,10 +1,10 @@
 let storedArray = [];
 
-// COLLECTING FORM-DATA
-
+//COLLECTING DATA FROM COMMENT FORM
 document.getElementById("button").onclick = (e) => {
   e.preventDefault();
-  //collect inputs' values
+
+  //collecting input values
   const author = document.getElementById("author").value;
   const comment = document.getElementById("comment").value;
   const photo = document.getElementById("photo").src;
@@ -33,7 +33,7 @@ document.getElementById("button").onclick = (e) => {
   }
 };
 
-//Add photo, listen to changes in <input type="file">
+//add photo, listen to changes in <input type="file">
 document.getElementById("photo").addEventListener("change", (e) => {
   const file = e.target.files[0];
   const reader = new FileReader();
@@ -48,9 +48,9 @@ document.getElementById("photo").addEventListener("change", (e) => {
   reader.readAsDataURL(file);
 });
 
-//GENERATE CARD = CHAT-MESSAGE
+//GENERATING CARD
 const generateCard = (author, date, photo, comment) => {
-  let card = document.createElement("div");
+  let card = document.createElement("li");
   card.classList.add("card");
 
   let card__image = document.createElement("img");
@@ -93,9 +93,8 @@ const generateCard = (author, date, photo, comment) => {
   return card;
 };
 
-//WORK WITH LOCALSTORAGE
-
-getArrFromLocalStorage = () => {
+//WORKING WITH LOCALSTORAGE
+const getArrFromLocalStorage = () => {
   let collection = JSON.parse(localStorage.getItem("chatMsgsCollection"));
 
   if (collection) {
@@ -112,11 +111,11 @@ getArrFromLocalStorage = () => {
   }
 };
 
-setArrToLocalStorage = () => {
+const setArrToLocalStorage = () => {
   localStorage.setItem("chatMsgsCollection", JSON.stringify(storedArray));
 };
 
-addElementToLocalStorage = (author, date, photo, comment) => {
+const addElementToLocalStorage = (author, date, photo, comment) => {
   storedArray.push([author, date, photo, comment]);
   setArrToLocalStorage();
 };
@@ -156,46 +155,16 @@ document.addEventListener("DOMContentLoaded", function () {
 //Удаление карточки/не работает
 document.addEventListener("click", function (ev) {
   if (ev.target.tagName === "BUTTON") {
+    let li = ev.target.closest("li");
+    let nodes = Array.from(li.closest("ul").children);
+    let delIndex = nodes.indexOf(li);
+
+    var messages = JSON.parse(localStorage.getItem("chatMsgsCollection"));
+    let updMessages = messages.filter((value, index) => index !== delIndex);
+    localStorage.setItem("chatMsgsCollection", JSON.stringify(updMessages));
+
     let div = ev.target.parentNode;
     let pic = div.parentNode;
     pic.remove();
-
-    localStorage.removeItem("chatMsgsCollection"); //удаляет все :(
   }
 });
-
-/*
-СТАРЫЙ КОД
-const comments = ["Привет!","Как дела?"];
-
-document.getElementById('addComment').onclick = function(event){
-
-    event.preventDefault();
-
-    let newComment = document.getElementById("newComment").value;
-    let noViagra = newComment.replace(/viagra/ig,'***');
-    let validComment = noViagra.replace(/xxx/ig,'***');
-
-    comments.push(validComment);
-
-    document.getElementById("newComment").value="";
-
-    generateComments();
-}
-
-
-function generateComments(){
-
-    let optionsString = "";
-
-    for (let comment of comments) {
-        optionsString += `<div id="validComment">${comment}</div>`;
-    }
-
-    document.getElementById('validComments').innerHTML = optionsString;
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {
-generateComments();
-});*/
