@@ -4,7 +4,7 @@ let storedArray = [];
 document.getElementById("button").onclick = (e) => {
   e.preventDefault();
 
-  //collecting input values
+  //collect input values
   const author = document.getElementById("author").value;
   const comment = document.getElementById("comment").value;
   const photo = document.getElementById("photo").src;
@@ -42,6 +42,10 @@ document.getElementById("photo").addEventListener("change", (e) => {
       const r = e.target;
       const photo = r.result;
       document.getElementById("photo").src = photo;
+
+      document.getElementById(
+        "photoPreview"
+      ).innerHTML = `<span><img src="${photo}" alt="avatar" id="avatar"></span>`;
     };
   })(file);
 
@@ -77,7 +81,7 @@ const generateCard = (author, date, photo, comment) => {
 
   let card__del = document.createElement("button");
   card__del.classList.add("card__del");
-  card__del.innerHTML = "Удалить";
+  card__del.innerHTML = "Delete";
 
   card.appendChild(card__image);
   card.appendChild(card__main);
@@ -107,7 +111,9 @@ const getArrFromLocalStorage = () => {
     document.getElementById("author").value = lastAuthor;
     document.getElementById("photo").src = lastPhoto;
 
-    //document.getElementById("photoPreview").innerHTML = `<span><img src="${lastPhoto}" alt="avatar" id="avatar" width="60"></span>`;
+    document.getElementById(
+      "photoPreview"
+    ).innerHTML = `<span><img src="${lastPhoto}" alt="avatar" id="avatar" width="60"></span>`;
   }
 };
 
@@ -120,23 +126,15 @@ const addElementToLocalStorage = (author, date, photo, comment) => {
   setArrToLocalStorage();
 };
 
-//Шаг 4: Нужно получать коллекцию из хранилица при загрузке страницы
+//GETTING ALL COMMENTS FROM LOCALSTORAGE ON PAGE LOADING
 document.addEventListener("DOMContentLoaded", function () {
   getComments();
 });
 
 function getComments() {
-  //Находим список всех комментариев
   getArrFromLocalStorage();
 
   for (let i = 0; i < storedArray.length; i++) {
-    //Храним комментарии в таком виде:
-    // [
-    //     [author, date, photo, comment],
-    //     [author, date, photo, comment],
-    //     ....
-    // ]
-
     const newCard = generateCard(
       storedArray[i][0],
       storedArray[i][1],
@@ -147,12 +145,7 @@ function getComments() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  //Что мы видим при загрузке
-  getArrFromLocalStorage();
-});
-
-//Удаление карточки/не работает
+//DELETE ONE COMMENT
 document.addEventListener("click", function (ev) {
   if (ev.target.tagName === "BUTTON") {
     let li = ev.target.closest("li");
