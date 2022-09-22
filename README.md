@@ -1,10 +1,6 @@
 # Chat-Interface
-Интерфейс для комментариев в чате со спамфильтром.<br><br> 17-ая неделя обучения в #ITGirlSchool.<br><br>
-На 18-й неделе обучения добавила сохранение комментариев через веб-хранилище и возможность сохранять свое имя и аватарку при вводе и запоминать их.
 
-# Mon-Carnet-de-Notes 📔
-
-Chat App built with Javascript and Local Storage, possibility to add avatar and name.
+A simple JavaScript chat room where users can set their usernames and avatars and messages are stored in Local Storage
 <br><br>
 
 ## Result
