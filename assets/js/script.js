@@ -143,6 +143,11 @@ function getComments() {
     );
     document.querySelector("#chat").appendChild(newCard);
   }
+
+  document.getElementById("author").value = ``;
+  document.getElementById(
+    "photoPreview"
+  ).innerHTML = `<span><img src="assets/img/user.png" alt="avatar" id="avatar" width="60"></span>`;
 }
 
 //DELETE ONE COMMENT

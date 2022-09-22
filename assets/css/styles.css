@@ -145,7 +145,7 @@ ul {
   border: solid 1px rgb(163, 175, 187);
 }
 
-.form__photoPreview {
+#avatar {
   margin: 15px 0px;
   width: 60px;
 }
