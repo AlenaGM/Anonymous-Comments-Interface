@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="shortcut icon" href="assets/img/comments.png" type="img/png">
-    <title>Комментарии</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/normalize.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="shortcut icon" href="assets/img/comments.png" type="img/png" />
+    <title>Chat</title>
+  </head>
+  <body>
     <div class="wrapper">
-        <div class="container">
-            <h1 class="title">Чат</h1>
-            <div id="chat"></div>
+      <div class="container">
+        <h1 class="title">Chat</h1>
+        <div id="chat"></div>
 
-            <form id="form" class="form">
-                <label for="author" class="form__label"> Имя *</label>
-                <input type="text" name="author" id="author" value="" class="form__input input_author"/>
-                <label for="photo" class="form__label"> Аватарка *</label>
-                <input type="file" name="file" id="photo"/>
-                <div id="photoPreview"></div>
-                <div class="form__label"> Комментарий:</div>
-                <textarea name="comment" id="comment" class="form__input"></textarea>
-                <input name="button" type="button" id="button" class="form__button" value="Отправить"/>
-            </form>
-        </div>
+        <form id="form" class="form">
+          <label for="author" class="form__label"> Name *</label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            value=""
+            class="form__input input_author"
+          />
+          <label for="photo" class="form__label"> Photo *</label>
+          <input type="file" name="file" id="photo" />
+          <div id="photoPreview"></div>
+          <div class="form__label">New comment:</div>
+          <textarea name="comment" id="comment" class="form__input"></textarea>
+          <input
+            name="button"
+            type="button"
+            id="button"
+            class="form__button"
+            value="Отправить"
+          />
+        </form>
+      </div>
     </div>
 
     <script src="assets/js/script.js"></script>
-</body>
+  </body>
 </html>
