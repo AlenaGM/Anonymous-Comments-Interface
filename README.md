@@ -1,6 +1,6 @@
 # Chat-Interface 🗨️
 
-A simple JavaScript chat room where users can set their usernames and avatars. Messages are stored in Local Storage
+A simple JavaScript chat room where users can set their usernames and avatars. Messages are stored in Local Storage.
 <br><br>
 
 ## Result
