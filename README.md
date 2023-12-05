@@ -1,13 +1,13 @@
-# Chat-Interface 🗨️
+# Chat Interface 🗨️
 
-A simple JavaScript chat room where users can set their usernames and avatars. Messages are stored in Local Storage.
+A basic JavaScript chat room where users can customize their usernames and avatars. The chat messages are stored in the Local Storage.
 <br><br>
 
 ## Result
 <img width="35%" alt="screen capture" src="../main/assets/img/captureweb.jpeg">
 
 ## Demo
-[Chat-Interface]
+[Chat Interface]
 
 ## Tech stack
 
@@ -23,4 +23,4 @@ A simple JavaScript chat room where users can set their usernames and avatars. M
   
 
    [ITGirlSchool]: <https://itgirlschool.com/en>
-   [Chat-Interface]: <https://alenagm.github.io/Chat-Interface/>
+   [Chat Interface]: <https://alenagm.github.io/chat-interface/>
