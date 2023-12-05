@@ -37,7 +37,7 @@ document.getElementById("button").onclick = (e) => {
 document.getElementById("photo").addEventListener("change", (e) => {
   const file = e.target.files[0];
   const reader = new FileReader();
-  reader.onload = (function (file) {
+  reader.onload = (function () {
     return function (e) {
       const r = e.target;
       const photo = r.result;

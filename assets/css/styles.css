@@ -104,9 +104,27 @@ ul {
 
 .card__del {
   width: 80px;
-  height: 20px;
+  height: 24px;
   align-self: flex-end;
   justify-self: flex-start;
+  background-color: #fb7575;
+  font-size: 14px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 0 #23262f3b;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+}
+
+.card__del:hover {
+  transform: translateY(-3px);
+}
+
+.card__del:focus {
+  outline: none;
 }
 
 /* - New comment form ---------------------- */
@@ -133,10 +151,27 @@ ul {
 }
 
 .form__button {
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
   width: 100px;
   height: 30px;
+  background-color: #4c90eb;
+  border: none;
   margin-top: 20px;
   border-radius: 8px;
+  box-shadow: 0 2px 0 #23262f3b;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  transform: translateY(-3px);
+}
+
+.form__button:focus {
+  outline: none;
 }
 
 .form__input {
